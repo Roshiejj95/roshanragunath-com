@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="64" viewBox="0 0 120 64">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Syne:wght@800&amp;display=swap');
+      .logo-text {
+        font-family: 'Syne', sans-serif;
+        font-weight: 800;
+        font-size: 28px;
+        letter-spacing: -0.03em;
+        fill: #e8edf5;
+      }
+    </style>
+  </defs>
+  <rect width="120" height="64" fill="#080b12" rx="8"/>
+  <text class="logo-text" x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">RR</text>
+</svg>

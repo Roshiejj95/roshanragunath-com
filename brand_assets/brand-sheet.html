@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Roshan Ragunath — Brand Sheet</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:           #080a0d;
+      --surface:      #0e1117;
+      --border:       #1a1f2e;
+      --border-bright:#252d3f;
+      --text:         #e8eaf0;
+      --muted:        #5a6175;
+      --dim:          #2e3547;
+      --accent:       #4af0a0;
+      --accent-glow:  rgba(74, 240, 160, 0.15);
+      --accent-dim:   rgba(74, 240, 160, 0.08);
+      --blue:         #4a9fff;
+      --yellow:       #f5c542;
+
+      --font-display: 'Syne', sans-serif;
+      --font-mono:    'DM Mono', monospace;
+    }
+
+    html, body {
+      width: 1440px;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-mono);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Grid background ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 40px 40px;
+      opacity: 0.35;
+      pointer-events: none;
+    }
+
+    /* ── Centre glow ── */
+    .glow-orb {
+      position: fixed;
+      top: -200px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(74,240,160,0.055) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    /* ── Layout ── */
+    .sheet {
+      width: 1440px;
+      padding: 64px 80px 72px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── Header ── */
+    .header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 40px;
+    }
+
+    .doc-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      border: 1px solid rgba(245,197,66,0.3);
+      background: rgba(245,197,66,0.07);
+      padding: 5px 13px;
+      border-radius: 2px;
+      margin-bottom: 18px;
+    }
+
+    .doc-pill::before {
+      content: '';
+      width: 5px; height: 5px;
+      background: var(--yellow);
+      border-radius: 50%;
+    }
+
+    .logo-mark {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 72px;
+      letter-spacing: -0.04em;
+      color: var(--text);
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+
+    .logo-mark .dot { color: var(--accent); }
+
+    .wordmark {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .header-right { text-align: right; }
+
+    .header-tagline {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text);
+      letter-spacing: 0.04em;
+      margin-bottom: 6px;
+    }
+
+    .header-tagline strong { color: var(--accent); font-weight: 400; }
+
+    .header-sub {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+    }
+
+    /* ── Section label ── */
+    .slabel {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .slabel::before { content: '//'; opacity: 0.5; }
+    .slabel::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── Main grid ── */
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 340px;
+      grid-template-rows: auto auto;
+      gap: 20px;
+    }
+
+    .panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* top accent line on panels */
+    .panel::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(74,240,160,0.25), transparent);
+    }
+
+    /* ── Colour palette ── */
+    .colors-panel { grid-column: 1 / 3; }
+
+    .swatches {
+      display: grid;
+      grid-template-columns: repeat(9, 1fr);
+      gap: 10px;
+    }
+
+    .swatch { display: flex; flex-direction: column; gap: 8px; }
+
+    .swatch-block {
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: 3px;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .swatch-name {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .swatch-hex {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--text);
+      letter-spacing: 0.02em;
+    }
+
+    /* ── Logo variants ── */
+    .logo-panel {
+      grid-column: 3;
+      grid-row: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .logo-variants {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex: 1;
+    }
+
+    .lv {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 16px;
+      border-radius: 3px;
+      flex: 1;
+      border: 1px solid transparent;
+    }
+    .lv--dark   { background: var(--bg); border-color: var(--border); }
+    .lv--light  { background: #e8eaf0; }
+    .lv--accent { background: var(--accent); }
+
+    .lv-rr {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 26px;
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+    .lv--dark   .lv-rr { color: var(--text); }
+    .lv--dark   .lv-rr .dot { color: var(--accent); }
+    .lv--light  .lv-rr { color: #080a0d; }
+    .lv--light  .lv-rr .dot { color: #2ab88a; }
+    .lv--accent .lv-rr { color: #080a0d; }
+    .lv--accent .lv-rr .dot { color: rgba(8,10,13,0.45); }
+
+    .lv-name {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      line-height: 1.5;
+    }
+    .lv--dark   .lv-name { color: var(--muted); }
+    .lv--light  .lv-name { color: #5a6175; }
+    .lv--accent .lv-name { color: rgba(8,10,13,0.55); }
+
+    .lv-tag {
+      margin-left: auto;
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .lv--dark   .lv-tag { color: var(--dim); }
+    .lv--light  .lv-tag { color: #9aa0b0; }
+    .lv--accent .lv-tag { color: rgba(8,10,13,0.4); }
+
+    /* ── Typography ── */
+    .type-panel {
+      grid-column: 1 / 3;
+      grid-row: 2;
+    }
+
+    .type-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+
+    .type-face-label {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .type-face-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .type-big-syne {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 42px;
+      letter-spacing: -0.04em;
+      color: var(--text);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    .type-big-dm {
+      font-family: 'DM Mono', monospace;
+      font-weight: 400;
+      font-size: 26px;
+      color: var(--text);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    .type-weights { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+
+    .tw-row { display: flex; align-items: baseline; gap: 12px; }
+
+    .tw-label {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      color: var(--dim);
+      letter-spacing: 0.1em;
+      width: 32px;
+      flex-shrink: 0;
+    }
+
+    .tw-syne-600 { font-family:'Syne',sans-serif; font-weight:600; font-size:16px; color:var(--text); letter-spacing:-0.02em; }
+    .tw-syne-700 { font-family:'Syne',sans-serif; font-weight:700; font-size:16px; color:var(--text); letter-spacing:-0.02em; }
+    .tw-syne-800 { font-family:'Syne',sans-serif; font-weight:800; font-size:16px; color:var(--text); letter-spacing:-0.02em; }
+
+    .tw-dm-300  { font-family:'DM Mono',monospace; font-weight:300; font-size:13px; color:var(--text); }
+    .tw-dm-400  { font-family:'DM Mono',monospace; font-weight:400; font-size:13px; color:var(--text); }
+    .tw-dm-500  { font-family:'DM Mono',monospace; font-weight:500; font-size:13px; color:var(--text); }
+    .tw-dm-400i { font-family:'DM Mono',monospace; font-weight:400; font-size:13px; color:var(--text); font-style:italic; }
+
+    .type-use {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--muted);
+      line-height: 1.7;
+      border-top: 1px solid var(--border);
+      padding-top: 10px;
+    }
+
+    /* ── Positioning panel ── */
+    .voice-panel {
+      grid-column: 3;
+      grid-row: 2;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .voice-items { display: flex; flex-direction: column; gap: 10px; flex: 1; }
+
+    .vi {
+      padding: 12px 14px;
+      background: var(--bg);
+      border-radius: 3px;
+      border: 1px solid var(--border);
+      border-left: 2px solid var(--accent);
+      flex: 1;
+    }
+
+    .vi-label {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 5px;
+    }
+
+    .vi-text {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .vi-text em { color: var(--muted); font-style: normal; }
+
+    /* ── Footer ── */
+    .footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--border);
+      padding-top: 28px;
+      margin-top: 28px;
+    }
+
+    .footer-logo {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 22px;
+      letter-spacing: -0.04em;
+      color: var(--text);
+    }
+    .footer-logo .dot { color: var(--accent); }
+
+    .footer-links {
+      display: flex;
+      gap: 32px;
+    }
+
+    .footer-link {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+
+    .footer-tag {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--dim);
+      letter-spacing: 0.08em;
+    }
+  </style>
+</head>
+<body>
+<div class="glow-orb"></div>
+<div class="sheet">
+
+  <!-- ── Header ── -->
+  <header class="header">
+    <div>
+      <div class="doc-pill">Brand Identity — 2025</div>
+      <div class="logo-mark">RR<span class="dot">.</span></div>
+      <div class="wordmark">Roshan Ragunath</div>
+    </div>
+    <div class="header-right">
+      <div class="header-tagline"><strong>Fullstack developer</strong> building production-ready applications<br>for businesses — from idea to deployment, end to end.</div>
+      <div class="header-sub">The Netherlands &nbsp;·&nbsp; roshanragunath.com &nbsp;·&nbsp; linkedin.com/in/roshan-ragunath</div>
+    </div>
+  </header>
+
+  <!-- ── Main ── -->
+  <div class="main-grid">
+
+    <!-- Colours -->
+    <div class="panel colors-panel">
+      <div class="slabel">Colour Palette</div>
+      <div class="swatches">
+        <div class="swatch">
+          <div class="swatch-block" style="background:#080a0d;"></div>
+          <div class="swatch-name">Background</div>
+          <div class="swatch-hex">#080A0D</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-block" style="background:#0e1117;"></div>
+          <div class="swatch-name">Surface</div>
+          <div class="swatch-hex">#0E1117</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-block" style="background:#1a1f2e;"></div>
+          <div class="swatch-name">Border</div>
+          <div class="swatch-hex">#1A1F2E</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-block" style="background:#252d3f;"></div>
+          <div class="swatch-name">Border Bright</div>
+          <div class="swatch-hex">#252D3F</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-block" style="background:#2e3547;"></div>
+          <div class="swatch-name">Dim</div>
+          <div class="swatch-hex">#2E3547</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-block" style="background:#4af0a0; box-shadow:0 0 20px rgba(74,240,160,0.45);"></div>
+          <div class="swatch-name">Accent</div>
+          <div class="swatch-hex">#4AF0A0</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-block" style="background:#4a9fff; box-shadow:0 0 16px rgba(74,159,255,0.3);"></div>
+          <div class="swatch-name">Blue</div>
+          <div class="swatch-hex">#4A9FFF</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-block" style="background:#e8eaf0;"></div>
+          <div class="swatch-name">Text</div>
+          <div class="swatch-hex">#E8EAF0</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-block" style="background:#f5c542; box-shadow:0 0 16px rgba(245,197,66,0.3);"></div>
+          <div class="swatch-name">Available</div>
+          <div class="swatch-hex">#F5C542</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Logo variants -->
+    <div class="panel logo-panel">
+      <div class="slabel">Logo Variants</div>
+      <div class="logo-variants">
+        <div class="lv lv--dark">
+          <div class="lv-rr">RR<span class="dot">.</span></div>
+          <div class="lv-name">Roshan<br>Ragunath</div>
+          <div class="lv-tag">Dark</div>
+        </div>
+        <div class="lv lv--light">
+          <div class="lv-rr">RR<span class="dot">.</span></div>
+          <div class="lv-name">Roshan<br>Ragunath</div>
+          <div class="lv-tag">Light</div>
+        </div>
+        <div class="lv lv--accent">
+          <div class="lv-rr">RR<span class="dot">.</span></div>
+          <div class="lv-name">Roshan<br>Ragunath</div>
+          <div class="lv-tag">Accent</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Typography -->
+    <div class="panel type-panel">
+      <div class="slabel">Typography</div>
+      <div class="type-grid">
+        <div>
+          <div class="type-face-label">Display — Syne</div>
+          <div class="type-big-syne">Syne</div>
+          <div class="type-weights">
+            <div class="tw-row"><span class="tw-label">600</span><span class="tw-syne-600">Roshan Ragunath</span></div>
+            <div class="tw-row"><span class="tw-label">700</span><span class="tw-syne-700">Roshan Ragunath</span></div>
+            <div class="tw-row"><span class="tw-label">800</span><span class="tw-syne-800">Roshan Ragunath</span></div>
+          </div>
+          <div class="type-use">Headings, logo mark, hero name, section titles.<br>Tight tracking: −0.02em to −0.04em.</div>
+        </div>
+        <div>
+          <div class="type-face-label">Body — DM Mono</div>
+          <div class="type-big-dm">DM Mono</div>
+          <div class="type-weights">
+            <div class="tw-row"><span class="tw-label">300</span><span class="tw-dm-300">Building production-ready applications.</span></div>
+            <div class="tw-row"><span class="tw-label">400</span><span class="tw-dm-400">Building production-ready applications.</span></div>
+            <div class="tw-row"><span class="tw-label">500</span><span class="tw-dm-500">Building production-ready applications.</span></div>
+            <div class="tw-row"><span class="tw-label">400i</span><span class="tw-dm-400i">Building production-ready applications.</span></div>
+          </div>
+          <div class="type-use">Body copy, nav links, labels, tags, UI text.<br>14px base, line-height 1.6–1.9. Monospaced for a precise, technical voice.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Positioning -->
+    <div class="panel voice-panel">
+      <div class="slabel">Positioning</div>
+      <div class="voice-items">
+        <div class="vi">
+          <div class="vi-label">Role</div>
+          <div class="vi-text">Fullstack developer</div>
+        </div>
+        <div class="vi">
+          <div class="vi-label">Value Prop</div>
+          <div class="vi-text">Building production-ready<br>applications for businesses —<br><em>from idea to deployment, end to end.</em></div>
+        </div>
+        <div class="vi">
+          <div class="vi-label">Core Stack</div>
+          <div class="vi-text">React / Next.js · Node.js<br>TypeScript · PostgreSQL<br>Python · n8n / Automation</div>
+        </div>
+        <div class="vi">
+          <div class="vi-label">Location</div>
+          <div class="vi-text">The Netherlands<br><em>Working with clients globally</em></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── Footer ── -->
+  <footer class="footer">
+    <div class="footer-logo">RR<span class="dot">.</span></div>
+    <div class="footer-links">
+      <span class="footer-link">roshanragunath.com</span>
+      <span class="footer-link">linkedin.com/in/roshan-ragunath</span>
+      <span class="footer-link">hello@roshanragunath.com</span>
+    </div>
+    <div class="footer-tag">Brand Sheet · 2025</div>
+  </footer>
+
+</div>
+</body>
+</html>

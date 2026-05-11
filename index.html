@@ -245,34 +245,6 @@
       background: rgba(255,255,255,0.03);
     }
 
-    /* Hero stats */
-    .hero-stats {
-      display: flex;
-      gap: 48px;
-      margin-top: 80px;
-      padding-top: 48px;
-      border-top: 1px solid var(--border);
-      opacity: 0;
-      animation: fadeUp 0.7s ease 0.55s forwards;
-    }
-
-    .stat-num {
-      font-family: var(--font-display);
-      font-size: 32px;
-      font-weight: 700;
-      color: var(--text);
-      display: block;
-      line-height: 1;
-      margin-bottom: 6px;
-    }
-
-    .stat-label {
-      font-size: 11px;
-      color: var(--muted);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
     /* ─── SECTION WRAPPER ─── */
     section {
       position: relative;
@@ -603,7 +575,6 @@
       .nav-links { display: none; }
       .hero { padding: 100px 24px 60px; }
       section { padding: 72px 24px; }
-      .hero-stats { gap: 32px; flex-wrap: wrap; }
       .about-grid { grid-template-columns: 1fr; gap: 40px; }
       .contact-inner { grid-template-columns: 1fr; gap: 48px; }
       footer { padding: 24px; flex-direction: column; gap: 8px; text-align: center; }
@@ -636,20 +607,6 @@
       <div class="hero-actions">
         <a href="#projects" class="btn-primary">View my work →</a>
         <a href="#contact" class="btn-secondary">Get in touch</a>
-      </div>
-      <div class="hero-stats">
-        <div>
-          <span class="stat-num">∞</span>
-          <span class="stat-label">Problems solved</span>
-        </div>
-        <div>
-          <span class="stat-num">Full</span>
-          <span class="stat-label">Stack coverage</span>
-        </div>
-        <div>
-          <span class="stat-num">0→1</span>
-          <span class="stat-label">Products shipped</span>
-        </div>
       </div>
     </div>
   </div>

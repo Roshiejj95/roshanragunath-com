@@ -804,20 +804,44 @@
     }, { threshold: 0.1 })
     reveals.forEach(el => observer.observe(el))
 
-    // Contact form (wire up to your backend / n8n webhook later)
-    function handleSubmit(e) {
+    const CONTACT_WEBHOOK = 'https://n8n.roshanragunath.com/webhook-test/roshanragunath-contact'
+
+    async function handleSubmit(e) {
       e.preventDefault()
+      const form = e.target
       const status = document.getElementById('form-status')
-      const btn = e.target.querySelector('button')
+      const btn = form.querySelector('button')
+      const data = Object.fromEntries(new FormData(form).entries())
+
       btn.textContent = 'Sending…'
       btn.style.opacity = '0.6'
-      // TODO: replace with your actual endpoint or n8n webhook
-      setTimeout(() => {
+      btn.disabled = true
+      status.style.color = 'var(--accent)'
+      status.textContent = ''
+
+      try {
+        const res = await fetch(CONTACT_WEBHOOK, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: data.name,
+            email: data.email,
+            message: data.message,
+            submittedAt: new Date().toISOString(),
+            source: 'roshanragunath.com'
+          })
+        })
+        if (!res.ok) throw new Error('Request failed: ' + res.status)
         status.textContent = '✓ Message sent — I\'ll be in touch soon.'
+        form.reset()
+      } catch (err) {
+        status.style.color = '#f87171'
+        status.textContent = '✗ Something went wrong. Email me directly at hello@roshanragunath.com.'
+      } finally {
         btn.textContent = 'Send message →'
         btn.style.opacity = '1'
-        e.target.reset()
-      }, 1000)
+        btn.disabled = false
+      }
     }
   </script>
 
